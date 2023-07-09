@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var weightLabel: UILabel!
 
+    @IBOutlet weak var heightSlider: UISlider!
+
+    @IBOutlet weak var weightSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -26,5 +30,9 @@ class ViewController: UIViewController {
     @IBAction func weightSliderChanged(_ sender: UISlider) {
         let rounded = (sender.value * 100).rounded(.up) / 100
         self.weightLabel.text = "\(String(format: "%.0f", rounded))Kg"
+    }
+
+    @IBAction func calculateButtonPressed(_ sender: UIButton) {
+        print(weightSlider.value / pow(heightSlider.value, 2))
     }
 }
