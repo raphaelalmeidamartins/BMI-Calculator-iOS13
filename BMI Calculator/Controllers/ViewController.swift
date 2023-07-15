@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func heightSliderChanged(_ sender: UISlider) {
@@ -33,14 +32,22 @@ class ViewController: UIViewController {
     }
 
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "getResult", sender: self)
+    }
+    
+    func calculateBMI() -> Float {
         let height = heightSlider.value
         let weight = weightSlider.value
 
         let bmi = weight / pow(height, 2)
         
-        let bmiViewController = SecondViewController()
-        bmiViewController.bmiValue = String(format: "%.1f", bmi)
-        
-        self.present(bmiViewController, animated: true, completion: nil)
+        return bmi
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "getResult" {
+            let destination = segue.destination as! ResultViewController
+            destination.bmiValue = self.calculateBMI()
+        }
     }
 }
