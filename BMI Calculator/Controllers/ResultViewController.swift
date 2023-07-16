@@ -9,7 +9,7 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-    var bmiValue: Float = 0.0
+    var BMIvalue: String = "0.0"
 
     @IBOutlet weak var bmiLabel: UILabel!
 
@@ -22,6 +22,10 @@ class ResultViewController: UIViewController {
     }
     
     func updateUI() {
-        self.bmiLabel.text = String(format: "%.1f", self.bmiValue)
+        self.bmiLabel.text = self.BMIvalue
+    }
+
+    @IBAction func recalculate(_ sender: UIButton) {
+        self.dismiss(animated: true)
     }
 }
