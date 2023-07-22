@@ -10,6 +10,10 @@ import UIKit
 
 class ResultViewController: UIViewController {
     var BMIvalue: String = "0.0"
+    var BMIColor: UIColor = .blue
+    var BMIAdvice: String = ""
+
+    @IBOutlet weak var resultBackground: UIImageView!
 
     @IBOutlet weak var bmiLabel: UILabel!
 
@@ -23,6 +27,8 @@ class ResultViewController: UIViewController {
     
     func updateUI() {
         self.bmiLabel.text = self.BMIvalue
+        self.messageLabel.text = self.BMIAdvice
+        self.resultBackground.backgroundColor = self.BMIColor
     }
 
     @IBAction func recalculate(_ sender: UIButton) {
